@@ -25,7 +25,7 @@
             Next
             MsgBox("Wireless Card " + My.Application.CommandLineArgs(0) + " were not found", 0 + 16, "ERROR")
             Return
-        ElseIf WLAMQuantity() = 1 Then
+        ElseIf WDList.Length = 2 Then
             WPM.Show()
         End If
     End Sub

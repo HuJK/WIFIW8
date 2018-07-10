@@ -1,6 +1,9 @@
-﻿Module Module1
+﻿Imports System.Text
+Imports System.IO
+Module Module1
 
     Public Function SystemCmd(ByVal Command As String) As String
+
         Dim process As New System.Diagnostics.Process()
         process.StartInfo.FileName = "cmd.exe"
         process.StartInfo.UseShellExecute = False
@@ -8,25 +11,41 @@
         process.StartInfo.RedirectStandardOutput = True
         process.StartInfo.RedirectStandardError = True
         process.StartInfo.CreateNoWindow = True
-        process.Start()
-        process.StandardInput.WriteLine(Command)
-        process.StandardInput.WriteLine("exit")
-        Dim Result As String = process.StandardOutput.ReadToEnd()
-        process.Close()
+        process.StartInfo.StandardOutputEncoding = Encoding.UTF8
+        process.StartInfo.StandardErrorEncoding = Encoding.UTF8
 
+        process.Start()
+        Dim utf8Writer = New StreamWriter(process.StandardInput.BaseStream, Encoding.UTF8)
+        process.StandardInput.WriteLine("chcp 65001")
+
+
+
+        utf8Writer.Write(Command & vbNewLine)
+
+
+        'Dim buffer = System.Text.Encoding.UTF8.GetBytes(Command)
+        'process.StandardInput.BaseStream.Write(buffer, 0, buffer.Length)
+        process.StandardInput.WriteLine(Command)
+
+        process.StandardInput.WriteLine("exit")
+        process.WaitForExit()
+        Dim Result = process.StandardOutput.ReadToEnd()
         Dim Str As String()
-        Dim inp As String = Split(Result, vbNewLine)(3)
         Dim opt As String = ""
         Str = Split(Result, vbNewLine)
-        For i = 4 To Str.Length - 3
+        For i = 7 To Str.Length - 4
             opt &= Str(i) & vbNewLine
         Next
-
+        Dim inp As String = Split(Str(6), vbNewLine)(0)
         ConsoleRecode.TextBox1.SelectionColor = Color.Red
-        ConsoleRecode.TextBox1.AppendText(inp & vbNewLine)
+        If inp(inp.Length - 1) <> vbLf Then
+            inp &= vbNewLine
+        End If
+        ConsoleRecode.TextBox1.AppendText(inp)
 
         ConsoleRecode.TextBox1.SelectionColor = Color.Green
         ConsoleRecode.TextBox1.AppendText(opt)
+        Result = "a" & vbNewLine & "a" & vbNewLine & "a" & vbNewLine & "a" & vbNewLine & opt & "a" & vbNewLine & "a" & vbNewLine
         Return Result
     End Function
     Public Function wifilistprofiles(ByVal myinterface As String) As String
@@ -35,43 +54,48 @@
         Dim start As Integer = 0
         Dim changeline As SByte = 0
         Str = Split(SystemCmd("netsh wlan show profiles interface=""" & myinterface & """"), vbNewLine)
-        Do
-            start += 1
-            If Str(start) = "" Then
-                changeline += 1
+
+        For i = 0 To Str.Length - 1
+            If Str(i) = "User profiles" Then
+                start = i
             End If
-        Loop Until changeline = 4
-        For i = start + 3 To Str.Length - 5
+        Next
+
+
+        For i = start + 2 To Str.Length - 1
             db = Split(Str(i), ": ")
-            Try
+            If db(0) = "    All User Profile     " Then
+
+
                 wlist &= db(1) & vbNewLine
-            Catch
-                Return ""
-            End Try
+            End If
         Next
         Return wlist
     End Function
     Public Function WLAMQuantity() As Integer
-        Dim Str As String()
-        Dim Qua As Integer = 0
-        Str = Split(SystemCmd("netsh wlan show profiles"), vbNewLine)
-        For i = 0 To Str.Length - 2
-            If Str(i) = "" Then Qua += 1
+        Return WLAMQuantity(SystemCmd("netsh wlan show interface"))
+    End Function
+    Public Function WLAMQuantity(ByVal Qstr As String) As Integer
+        Dim Strs = Split(Qstr, vbNewLine)
+        For Each Str As String In Strs
+            If Str.StartsWith("There is ") And Str.EndsWith(" interface on the system: ") Then
+                Return Convert.ToInt64(Split(Split(Str, "There is ")(1), " interface on the system: ")(0))
+            End If
         Next
-        Qua -= 3
-        Qua /= 3
-        Return Qua
+
     End Function
     Public Function WLAN() As String
         Dim Str, db As String()
         Dim list As String = ""
-        Dim Qua As Integer = WLAMQuantity()
+
         Dim count As Integer
-        Str = Split(SystemCmd("netsh wlan show interface"), vbNewLine)
-        For i = 5 To Str.Length - 2
-            If Str(i) = "" Then
+        Dim ocmdresult = SystemCmd("netsh wlan show interface")
+        Str = Split(ocmdresult, vbNewLine)
+        Dim Qua As Integer = WLAMQuantity(ocmdresult)
+        For i = 0 To Str.Length - 1
+            If Str(i).StartsWith("    Name") Then
                 count += 1
-                db = Split(Str(i + 1), ": ")
+                db = Split(Str(i), ": ")
                 Try
                     list &= db(1) & vbNewLine
                 Catch
@@ -88,25 +112,15 @@
         Dim commandLine As String = "netsh wlan show profile name=""" & mySSID & """ interface=""" & myinterface & """ key=clear" & vbNewLine
         inputvalue = Split(SystemCmd(commandLine), vbNewLine)
         Dim counter As Integer
-        For i As Integer = 0 To inputvalue.Length
-            'Dim L5 As String = 
-            If (Strings.Left(inputvalue(i), 5) = "-----") AndAlso (counter <= 3) Then
-                counter += 1
-            ElseIf counter >= 3
-                returnvalue = inputvalue(i + 3)
-                Exit For
+
+        For i As Integer = 0 To inputvalue.Length - 1
+
+            If inputvalue(i).StartsWith("    Key Content") Then
+                Return Split(inputvalue(i), " :", 2)(1)
             End If
 
         Next
-        Try
-            If (Split(returnvalue, "   :", 2)(1).Length > 4) Then
-                Return Split(returnvalue, "   :", 2)(1)
-            Else
-                Return ""
-            End If
-        Catch
-            Return ""
-        End Try
+        Return ""
     End Function
     Public Sub showwifiinfo(ByVal mySSID As String, ByVal myinterface As String)
         Dim Str As String()
