@@ -15,12 +15,12 @@ Module Module1
         process.StartInfo.StandardErrorEncoding = Encoding.UTF8
 
         process.Start()
-        Dim utf8Writer = New StreamWriter(process.StandardInput.BaseStream, Encoding.UTF8)
+        'Dim utf8Writer = New StreamWriter(process.StandardInput.BaseStream, Encoding.UTF8)
         process.StandardInput.WriteLine("chcp 65001")
 
 
 
-        utf8Writer.Write(Command & vbNewLine)
+        'utf8Writer.Write(Command & vbNewLine)
 
 
         'Dim buffer = System.Text.Encoding.UTF8.GetBytes(Command)
