@@ -115,8 +115,8 @@
     Private Sub ExporttoXML_Click(sender As Object, e As EventArgs) Handles ExporttoXML.Click
         FolderBrowserDialog1.ShowDialog()
         Try
-            SystemCmd("netsh wlan export profile folder=""" & FolderBrowserDialog1.SelectedPath & """ name=""" & ListBox1.Text & """ interface=""" & CardList.ComboBox1.Text & """")
-            MsgBox("XML File Saved As " & FolderBrowserDialog1.SelectedPath & "\" & CardList.ComboBox1.Text & "-" & ListBox1.Text & ".xml", 0 + 64, "Success")
+            Dim bk = SystemCmd("netsh wlan export profile folder=""" & FolderBrowserDialog1.SelectedPath & """ name=""" & ListBox1.Text & """ interface=""" & CardList.ComboBox1.Text & """")
+            MsgBox(bk, 0 + 64, "Success")
         Catch
             MsgBox("Failed", 0 + 16, "Failed")
         End Try
@@ -127,10 +127,11 @@
         Dim bd As String = ""
         OpenFileDialog1.ShowDialog()
         bk = Split(SystemCmd("netsh wlan add profile filename=""" & OpenFileDialog1.FileName & """ interface=""" & CardList.ComboBox1.Text & """"), vbNewLine)
-        For i = 4 To bk.Length - 4
+        For i = 0 To bk.Length - 1
             bd &= bk(i) & vbNewLine
         Next
         MsgBox(bd, 0 + 64)
+        Me.LoadList()
     End Sub
 
     Private Sub JToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JToolStripMenuItem.Click

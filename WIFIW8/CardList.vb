@@ -1,6 +1,7 @@
 ﻿Public Class CardList
 
     Private Sub CardList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         If System.IO.File.Exists(Environ("systemroot") & "\system32\netsh.exe") Then
         Else
             MsgBox("System lack of" & Environ("systemroot") & "\system32\netsh.exe", 0 + 16, "Error")

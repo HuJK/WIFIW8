@@ -77,9 +77,9 @@ Partial Class WPM
         Me.ListBox1.Font = New System.Drawing.Font("微軟正黑體", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 31
-        Me.ListBox1.Location = New System.Drawing.Point(22, 81)
+        Me.ListBox1.Location = New System.Drawing.Point(22, 75)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(564, 345)
+        Me.ListBox1.Size = New System.Drawing.Size(564, 314)
         Me.ListBox1.TabIndex = 0
         '
         'Showinfo
@@ -173,7 +173,7 @@ Partial Class WPM
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("微軟正黑體", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label1.Location = New System.Drawing.Point(16, 41)
+        Me.Label1.Location = New System.Drawing.Point(16, 38)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(68, 31)
         Me.Label1.TabIndex = 1
@@ -201,89 +201,89 @@ Partial Class WPM
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.JToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
         Me.ToolsToolStripMenuItem.Text = "Tools"
         '
         'JToolStripMenuItem
         '
         Me.JToolStripMenuItem.Name = "JToolStripMenuItem"
-        Me.JToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.JToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.JToolStripMenuItem.Text = "Command Record"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.ForeColor = System.Drawing.Color.Green
-        Me.Button1.Location = New System.Drawing.Point(533, 34)
+        Me.Button1.Location = New System.Drawing.Point(533, 31)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(53, 38)
+        Me.Button1.Size = New System.Drawing.Size(53, 35)
         Me.Button1.TabIndex = 3
         Me.Button1.Text = "Refresh"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'ButtonMU
         '
-        Me.ButtonMU.Location = New System.Drawing.Point(90, 34)
+        Me.ButtonMU.Location = New System.Drawing.Point(90, 31)
         Me.ButtonMU.Name = "ButtonMU"
-        Me.ButtonMU.Size = New System.Drawing.Size(56, 38)
+        Me.ButtonMU.Size = New System.Drawing.Size(56, 35)
         Me.ButtonMU.TabIndex = 5
         Me.ButtonMU.Text = "MU"
         Me.ButtonMU.UseVisualStyleBackColor = True
         '
         'ButtonMD
         '
-        Me.ButtonMD.Location = New System.Drawing.Point(152, 34)
+        Me.ButtonMD.Location = New System.Drawing.Point(152, 31)
         Me.ButtonMD.Name = "ButtonMD"
-        Me.ButtonMD.Size = New System.Drawing.Size(56, 38)
+        Me.ButtonMD.Size = New System.Drawing.Size(56, 35)
         Me.ButtonMD.TabIndex = 6
         Me.ButtonMD.Text = "MD"
         Me.ButtonMD.UseVisualStyleBackColor = True
         '
         'ButtonM2
         '
-        Me.ButtonM2.Location = New System.Drawing.Point(214, 34)
+        Me.ButtonM2.Location = New System.Drawing.Point(214, 31)
         Me.ButtonM2.Name = "ButtonM2"
-        Me.ButtonM2.Size = New System.Drawing.Size(56, 38)
+        Me.ButtonM2.Size = New System.Drawing.Size(56, 35)
         Me.ButtonM2.TabIndex = 7
         Me.ButtonM2.Text = "M2..."
         Me.ButtonM2.UseVisualStyleBackColor = True
         '
         'ButtonXML
         '
-        Me.ButtonXML.Location = New System.Drawing.Point(338, 34)
+        Me.ButtonXML.Location = New System.Drawing.Point(338, 31)
         Me.ButtonXML.Name = "ButtonXML"
-        Me.ButtonXML.Size = New System.Drawing.Size(56, 38)
+        Me.ButtonXML.Size = New System.Drawing.Size(56, 35)
         Me.ButtonXML.TabIndex = 8
         Me.ButtonXML.Text = "XML"
         Me.ButtonXML.UseVisualStyleBackColor = True
         '
         'ButtonDelete
         '
-        Me.ButtonDelete.Location = New System.Drawing.Point(276, 34)
+        Me.ButtonDelete.Location = New System.Drawing.Point(276, 31)
         Me.ButtonDelete.Name = "ButtonDelete"
-        Me.ButtonDelete.Size = New System.Drawing.Size(56, 38)
+        Me.ButtonDelete.Size = New System.Drawing.Size(56, 35)
         Me.ButtonDelete.TabIndex = 9
-        Me.ButtonDelete.Text = "Rm"
+        Me.ButtonDelete.Text = "Del"
         Me.ButtonDelete.UseVisualStyleBackColor = True
         '
         'ButtonINFO
         '
-        Me.ButtonINFO.Location = New System.Drawing.Point(400, 34)
+        Me.ButtonINFO.Location = New System.Drawing.Point(400, 31)
         Me.ButtonINFO.Name = "ButtonINFO"
-        Me.ButtonINFO.Size = New System.Drawing.Size(56, 38)
+        Me.ButtonINFO.Size = New System.Drawing.Size(56, 35)
         Me.ButtonINFO.TabIndex = 10
         Me.ButtonINFO.Text = "Info"
         Me.ButtonINFO.UseVisualStyleBackColor = True
@@ -331,9 +331,9 @@ Partial Class WPM
         'ButtonMENU
         '
         Me.ButtonMENU.ForeColor = System.Drawing.Color.Green
-        Me.ButtonMENU.Location = New System.Drawing.Point(90, 34)
+        Me.ButtonMENU.Location = New System.Drawing.Point(90, 31)
         Me.ButtonMENU.Name = "ButtonMENU"
-        Me.ButtonMENU.Size = New System.Drawing.Size(53, 38)
+        Me.ButtonMENU.Size = New System.Drawing.Size(53, 35)
         Me.ButtonMENU.TabIndex = 12
         Me.ButtonMENU.Text = "Menu"
         Me.ButtonMENU.UseVisualStyleBackColor = True
@@ -344,20 +344,21 @@ Partial Class WPM
         Me.ButtonPWD.BackgroundImage = Global.WIFIW8.My.Resources.Resources.w7uacshield1
         Me.ButtonPWD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ButtonPWD.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ButtonPWD.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.ButtonPWD.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonPWD.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.ButtonPWD.Location = New System.Drawing.Point(462, 34)
+        Me.ButtonPWD.ForeColor = System.Drawing.SystemColors.MenuText
+        Me.ButtonPWD.Location = New System.Drawing.Point(462, 31)
         Me.ButtonPWD.Name = "ButtonPWD"
-        Me.ButtonPWD.Size = New System.Drawing.Size(56, 38)
+        Me.ButtonPWD.Size = New System.Drawing.Size(56, 35)
         Me.ButtonPWD.TabIndex = 11
         Me.ButtonPWD.Text = "Pwd"
         Me.ButtonPWD.UseVisualStyleBackColor = True
         '
         'WPM
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 479)
+        Me.ClientSize = New System.Drawing.Size(611, 442)
         Me.Controls.Add(Me.ButtonMENU)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ButtonPWD)
@@ -372,7 +373,7 @@ Partial Class WPM
         Me.Controls.Add(Me.ListBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.MinimumSize = New System.Drawing.Size(16, 203)
+        Me.MinimumSize = New System.Drawing.Size(16, 190)
         Me.Name = "WPM"
         Me.Text = "WIFI Profile Manager"
         Me.Showinfo.ResumeLayout(False)

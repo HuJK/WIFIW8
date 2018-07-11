@@ -3,7 +3,8 @@ Imports System.IO
 Module Module1
 
     Public Function SystemCmd(ByVal Command As String) As String
-
+        'Command = "python -c print(""""""你好"""""",""""""你好"""""".encode(""""""utf8""""""))"
+        'Command = "ping g.cn"
         Dim process As New System.Diagnostics.Process()
         process.StartInfo.FileName = "cmd.exe"
         process.StartInfo.UseShellExecute = False
@@ -15,17 +16,26 @@ Module Module1
         process.StartInfo.StandardErrorEncoding = Encoding.UTF8
 
         process.Start()
-        'Dim utf8Writer = New StreamWriter(process.StandardInput.BaseStream, Encoding.UTF8)
+
         process.StandardInput.WriteLine("chcp 65001")
+        'I'v been tried servial ways, still can't sand utf8 command
 
+        'Try #1 , not work at all
+        'Dim utf8Writer = New StreamWriter(process.StandardInput.BaseStream, Encoding.UTF8)
+        'utf8Writer.Write(Command)
 
-
-        'utf8Writer.Write(Command & vbNewLine)
-
-
+        'Try #2 , not work either
         'Dim buffer = System.Text.Encoding.UTF8.GetBytes(Command)
         'process.StandardInput.BaseStream.Write(buffer, 0, buffer.Length)
-        process.StandardInput.WriteLine(Command)
+
+        'Try #3 it works
+        Dim tmpFile = "tmpargs.bat"
+        Dim file As System.IO.StreamWriter
+        file = My.Computer.FileSystem.OpenTextFileWriter(tmpFile, False, New UTF8Encoding(False))
+        file.WriteLine(Command)
+        file.Close()
+        process.StandardInput.WriteLine(tmpFile)
+
 
         process.StandardInput.WriteLine("exit")
         process.WaitForExit()
@@ -33,10 +43,14 @@ Module Module1
         Dim Str As String()
         Dim opt As String = ""
         Str = Split(Result, vbNewLine)
-        For i = 7 To Str.Length - 4
-            opt &= Str(i) & vbNewLine
+
+
+        For i = 9 To Str.Length - 4
+            If Str(i) <> "" Then
+                opt &= Str(i) & vbNewLine
+            End If
         Next
-        Dim inp As String = Split(Str(6), vbNewLine)(0)
+        Dim inp As String = "> " & Split(Str(8), ">", 2)(1)
         ConsoleRecode.TextBox1.SelectionColor = Color.Red
         If inp(inp.Length - 1) <> vbLf Then
             inp &= vbNewLine
@@ -46,7 +60,8 @@ Module Module1
         ConsoleRecode.TextBox1.SelectionColor = Color.Green
         ConsoleRecode.TextBox1.AppendText(opt)
         Result = "a" & vbNewLine & "a" & vbNewLine & "a" & vbNewLine & "a" & vbNewLine & opt & "a" & vbNewLine & "a" & vbNewLine
-        Return Result
+        System.IO.File.Delete(tmpFile)
+        Return opt
     End Function
     Public Function wifilistprofiles(ByVal myinterface As String) As String
         Dim Str, db As String()
@@ -111,7 +126,6 @@ Module Module1
         Dim returnvalue As String = ""
         Dim commandLine As String = "netsh wlan show profile name=""" & mySSID & """ interface=""" & myinterface & """ key=clear" & vbNewLine
         inputvalue = Split(SystemCmd(commandLine), vbNewLine)
-        Dim counter As Integer
 
         For i As Integer = 0 To inputvalue.Length - 1
 
@@ -126,7 +140,7 @@ Module Module1
         Dim Str As String()
         Dim info As String = ""
         Str = Split(SystemCmd("netsh wlan show profile name=""" & mySSID & """ interface=""" & myinterface & """ key=clear"), vbNewLine)
-        For i = 10 To Str.Length - 4
+        For i = 0 To Str.Length - 1
             info &= Str(i) & vbNewLine
         Next
         MsgBox(info)

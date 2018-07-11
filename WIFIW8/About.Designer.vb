@@ -38,7 +38,7 @@ Partial Class About
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseWaitCursor = True
         '
-        'Form2
+        'About
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -46,7 +46,7 @@ Partial Class About
         Me.Controls.Add(Me.TextBox1)
         Me.MaximumSize = New System.Drawing.Size(438, 650)
         Me.MinimumSize = New System.Drawing.Size(438, 650)
-        Me.Name = "Form2"
+        Me.Name = "About"
         Me.Text = "About"
         Me.ResumeLayout(False)
         Me.PerformLayout()

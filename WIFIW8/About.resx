@@ -118,23 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="TextBox1.Text" xml:space="preserve">
-    <value>有一天,我想調整一下我在win8
-中wifi的順序，發現一直找不到
-怎麼調!!在win7中明明一下就找
-到了!所以我又切換回win7去找(
-我家是雙系統)!才發現在win8中
-的「管理無線網路」不見了!!之
-後我就去網路上搜尋相關資訊，
-找到一個程式可以代替這個東西
-!一用之下才發現...............這是什
-麼爛東西?Bug一堆!!右鍵選單裡
-面只有匯出XML和匯入XML能用
-!!!!現在也是寒假，我天天都能玩
-電腦!!!!平常課業壓力太大了，根
-本沒時間弄這些!!!!所以就決定要
-寫這個程式了!
+    <value>有一天,我想調整一下我在win8中wifi的順序，發現一直找不到怎麼調!!
+所以我又切換回win7去找(雙系統)!才發現在win8中的「管理無線網路」被微軟刪除了!!
+之後我就去網路上搜尋相關資訊，但是又一直找不到適合的替代品。
+所以就決定自己寫一個出來了!
+
+原理是呼叫netsh來控制，可以按下Tools→Command Record來查看操作細節!
+
 有甚麼BUG請寫電子郵件信至
-s920361@yahoo.com.tw
+contact@sivilization.com
                            Juin-Kai,Hu</value>
   </data>
 </root>
