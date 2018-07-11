@@ -1,5 +1,5 @@
 # WIFIW8
-Wifi Profile Manager for Windows 8
+Wifi Profile Manager for Windows 7/8/10
 
 Download Link
 ---------
